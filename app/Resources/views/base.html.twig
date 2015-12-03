@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Scrumator{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="stylesheet" type="stylesheet" href="{{asset('css/style.css')}}"/>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <script src="{{asset('js/jquery-1.11.3.min.js')}}"></script>
+    </head>
+    <body>
+        <div>
+            {% block banner %} 
+               
+            {% endblock %}
+
+            {% block menu %} 
+                <nav>
+                <ul class='clear' id="menu-general">
+                    <li><a href="{{ path('accueil') }}"> Accueil </a></li>
+                    <li><a href="{{ path('sprint') }}"> Gestion des sprints </a></li>
+                    <li><a href="{{ path('points') }}"> Gestion des points </a></li>
+                    <li><a href="{{ path('task') }}"> Gestion des taches </a></li>
+                    <li><a href="{{ path('status') }}"> Gestion des statuts </a></li>
+                    <li><a href="{{ path('user_list') }}"> Gestion des utilisateurs </a></li>
+                    <li><a href="{{ path('project') }}"> Gestion des projets </a></li>
+                    <li><a href="{{ path('user_stories') }}"> Gestion des user_stories </a></li>
+                </ul>
+                </nav>
+             
+            {% endblock%}
+            {% block content %}{% endblock %}
+            {% block javascripts %}
+                <script>
+                    $("#bt").click(function(){
+                        console.log("coucou");
+                        $('#test').css("background", "pink");
+                        $(this).css("background", "greenyellow");
+                        $.ajax({
+                            url: "{{ path('ajaxCall')}}",
+                            type:"post",
+                            data:{nom:"salome"},
+                            success: function(result){
+                                console.log(result);
+                            },
+                            
+                        })
+                    })
+                    
+                </script>
+            {% endblock %}
+        </div>
+    </body>
+</html>

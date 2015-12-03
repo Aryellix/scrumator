@@ -1,0 +1,85 @@
+{% extends '::base.html.twig' %}
+
+{% block content -%}
+    <h1>Project edit</h1>
+
+    {{ form(edit_form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('project') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+
+
+<div id='user-occupe'>
+        <p>Les utilisateurs pris sont :</p>
+   
+        <ul>
+     {% for userlk in usersProject%}
+         
+             <li class='occupe lkswitch' data-id='{{userlk.user.id}}'><a href='#'>{{userlk.user.username}}</a></li>
+         
+        {%endfor%}
+        </ul>
+</div>
+
+<div id='user-libre'>
+        <p>Les utilisateurs libres sont :</p>
+        
+            <ul>
+        {% for user in libres %}
+            
+                <li class='libre lkswitch' data-id='{{user.id}}'> <a href="#">{{user.username}}</a></li>
+            
+        {%endfor%}
+            </ul>
+</div>        
+    
+{% endblock %}
+
+ {%block javascripts %}
+        
+            <script>
+                
+                function callAjax(arg, action){
+                    
+                    
+                    var dataId = arg.attr("data-id");
+                   
+                
+                $.ajax({
+                            url: "{{ path('switchProjectUser')}}",
+                            type:"get",
+                            data:{userId:dataId ,projectId:{{ entity.id }},action:action}
+                            
+                                })
+                                
+}
+                
+                $(".lkswitch").click(function(){
+                    if($(this).hasClass('occupe')){
+                        callAjax($(this), "remove");
+                        $(this).removeClass('occupe').addClass('libre');
+                        $("#user-libre ul").append($(this));
+                        return;
+                    }
+                    if($(this).hasClass('libre')){
+                        callAjax($(this), "add");
+                        $(this).removeClass('libre').addClass('occupe');
+                        $("#user-occupe ul").append($(this));
+                        return;
+                    }
+                    var data = $(this).attr("data-id");
+                        console.log(data);
+                    });
+                    
+                   
+                
+                
+            </script>
+            
+        {%endblock%}

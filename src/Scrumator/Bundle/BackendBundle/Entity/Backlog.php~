@@ -1,0 +1,72 @@
+<?php
+
+namespace Scrumator\Bundle\BackendBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Backlog
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Scrumator\Bundle\BackendBundle\Entity\BacklogRepository")
+ */
+class Backlog
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="desciption", type="string", length=255)
+     */
+    private $desciption;
+    
+  /**
+     *
+     * @ORM\ManyToOne(targetEntity="Project")
+     */
+    private $project;
+  
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set desciption
+     *
+     * @param string $desciption
+     *
+     * @return Backlog
+     */
+    public function setDesciption($desciption)
+    {
+        $this->desciption = $desciption;
+
+        return $this;
+    }
+
+    /**
+     * Get desciption
+     *
+     * @return string
+     */
+    public function getDesciption()
+    {
+        return $this->desciption;
+    }
+}
+

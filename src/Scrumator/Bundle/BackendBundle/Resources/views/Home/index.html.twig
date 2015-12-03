@@ -1,0 +1,53 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}ScrumatorBackendBundle:Home:index{% endblock %}
+
+{% block content %}
+<h1>Welcome to Scrumator !</h1>
+
+ <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Ability</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('project_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.name }}</td>
+                <td>{{ entity.ability }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('project_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('project_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('project_choose', { 'project_id': entity.id }) }}">choose</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        
+       
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('project_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+                <p> <button id="bt">Appel Ajax</button> </p>
+                <div id="test"></div>
+
+{% endblock %}

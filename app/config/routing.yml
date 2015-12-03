@@ -1,0 +1,6 @@
+scrumator_backend:
+    resource: "@ScrumatorBackendBundle/Controller/"
+    type:     annotation
+    prefix:   /admin
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

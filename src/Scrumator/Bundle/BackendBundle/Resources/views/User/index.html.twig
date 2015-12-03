@@ -1,0 +1,44 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}ScrumatorBackendBundle:User:index{% endblock %}
+
+{% block content %}
+<h1>Utilisateurs</h1>
+
+<table class="records_list">
+        <thead>
+            <tr>
+                <th>Nom</th>  
+                <th></th>  
+                <th>Ability</th>  
+            </tr>
+        </thead>
+        <tbody>
+
+     {% for entity in entities %}
+            <tr>
+                <td>{{ entity.username }}</td>
+                <td><a href="{{ path('user_edit',  { 'user_id': entity.id }) }}">Modifier</a></td>
+                {% if is_granted('ROLE_SUPER_ADMIN') %}
+                <td><a href="{{ path('switch_user',  { 'user_id': entity.id }) }}">enable</a></td>
+                {% endif %}
+                {% if entity.enabled == '1' %}
+                <td> Able</td>
+                {%else%}
+                <td> Enable</td>
+                {%endif%}
+                
+            </tr>
+           
+            
+            
+        {% endfor %}
+        
+    </table>
+        <a href="{{ path('user_new') }}"> Créer un utilisateur </a>
+        </tbody>
+{% endblock %}
+
+
+
+       
