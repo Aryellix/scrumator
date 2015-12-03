@@ -173,6 +173,42 @@ class UserController extends Controller
          
      }
      
+     /**
+     * @Route("/switchlead", name="switchLead")
+     */
+     public function switchLead(Request $request) {
+         $em = $this->getDoctrine()->getManager();
+         $project = $em->getRepository("ScrumatorBackendBundle:Project")->find($request->query->get('projectId'));
+         $user = $em->getRepository("AppBundle:User")->find($request->query->get('userId'));
+         $lead =$em->getRepository("ScrumatorBackendBundle:user_project_link")->findOneBy(array(
+             'project'=>$project,
+             'lead'=>true
+        ));
+        var_dump($lead);
+        
+        if($lead){
+            $lead->setLead(false);
+            $em->persist($lead);
+        }
+        
+         $lead =$em->getRepository("ScrumatorBackendBundle:user_project_link")->findOneBy(array(
+             'project'=>$project,
+             'user'=>$user
+        ));
+         
+         if($lead){
+             $lead->setLead(true);
+             $em->persist($lead);
+             $em->flush();
+         }
+         
+         
+        
+        return new Response();
+         
+         
+     }
+     
      
      /**
      * @Route("/switchprojectuser", name="switchProjectUser")

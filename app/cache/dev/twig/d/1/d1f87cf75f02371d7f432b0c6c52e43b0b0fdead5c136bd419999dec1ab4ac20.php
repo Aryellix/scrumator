@@ -22,23 +22,23 @@ class __TwigTemplate_6e140e1c096e9926e8af99247a8ef9c63a86775fb36d3d1bf93a3f74d3c
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_bfda4a5e39daad870564d2709b884ff822ebbd9eb3735e047043fdf7af6a0290 = $this->env->getExtension("native_profiler");
-        $__internal_bfda4a5e39daad870564d2709b884ff822ebbd9eb3735e047043fdf7af6a0290->enter($__internal_bfda4a5e39daad870564d2709b884ff822ebbd9eb3735e047043fdf7af6a0290_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "ScrumatorBackendBundle:Project:edit.html.twig"));
+        $__internal_4553dfa88780141af01006fd4107cdd5c5f4df85a38e8b9eba7fe564ac8e28cb = $this->env->getExtension("native_profiler");
+        $__internal_4553dfa88780141af01006fd4107cdd5c5f4df85a38e8b9eba7fe564ac8e28cb->enter($__internal_4553dfa88780141af01006fd4107cdd5c5f4df85a38e8b9eba7fe564ac8e28cb_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "ScrumatorBackendBundle:Project:edit.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_bfda4a5e39daad870564d2709b884ff822ebbd9eb3735e047043fdf7af6a0290->leave($__internal_bfda4a5e39daad870564d2709b884ff822ebbd9eb3735e047043fdf7af6a0290_prof);
+        $__internal_4553dfa88780141af01006fd4107cdd5c5f4df85a38e8b9eba7fe564ac8e28cb->leave($__internal_4553dfa88780141af01006fd4107cdd5c5f4df85a38e8b9eba7fe564ac8e28cb_prof);
 
     }
 
     // line 3
     public function block_content($context, array $blocks = array())
     {
-        $__internal_907fd561776a2ff5cb1e6848ba8479b336e16174106db7ba8b197afe68e1531e = $this->env->getExtension("native_profiler");
-        $__internal_907fd561776a2ff5cb1e6848ba8479b336e16174106db7ba8b197afe68e1531e->enter($__internal_907fd561776a2ff5cb1e6848ba8479b336e16174106db7ba8b197afe68e1531e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "content"));
+        $__internal_4c6bc5e1da2f7d896a72c7318e2716bbefadccae8c1e39333c03760bc7720f63 = $this->env->getExtension("native_profiler");
+        $__internal_4c6bc5e1da2f7d896a72c7318e2716bbefadccae8c1e39333c03760bc7720f63->enter($__internal_4c6bc5e1da2f7d896a72c7318e2716bbefadccae8c1e39333c03760bc7720f63_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "content"));
 
         // line 4
-        echo "<h1>Project edit</h1>
+        echo "<h1>Modification du projet</h1>
 
     ";
         // line 6
@@ -46,88 +46,108 @@ class __TwigTemplate_6e140e1c096e9926e8af99247a8ef9c63a86775fb36d3d1bf93a3f74d3c
         echo "
 
         <ul class=\"record_actions\">
-    <li>
-        <a href=\"";
+            <li>
+                <a href=\"";
         // line 10
         echo $this->env->getExtension('routing')->getPath("project");
         echo "\">
-            Back to the list
-        </a>
-    </li>
-    <li>";
-        // line 14
+                    Retour à la liste des projets
+                </a>
+            </li>
+            <li>
+                ";
+        // line 15
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["delete_form"]) ? $context["delete_form"] : $this->getContext($context, "delete_form")), 'form');
-        echo "</li>
-</ul>
+        echo "
+            </li>
+        </ul>
 
 
 <div id='user-occupe'>
-        <p>Les utilisateurs pris sont :</p>
+        <h2>Les utilisateurs pris sont :</h2>
    
         <ul>
      ";
-        // line 22
+        // line 24
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["usersProject"]) ? $context["usersProject"] : $this->getContext($context, "usersProject")));
         foreach ($context['_seq'] as $context["_key"] => $context["userlk"]) {
-            // line 23
+            // line 25
             echo "         
-             <li><a class='occupe lkswitch' data-id='";
-            // line 24
+             <li class='occupe lkswitch' data-id='";
+            // line 26
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["userlk"], "user", array()), "id", array()), "html", null, true);
-            echo "' href='#'>";
+            echo "'>
+                 
+                 <a href='#'>";
+            // line 28
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["userlk"], "user", array()), "username", array()), "html", null, true);
-            echo "</a></li>
+            echo "</a> 
+                 <input type=\"radio\" name=\"lead\" value=\"Définir comme lead\"
+                        ";
+            // line 30
+            if ($this->getAttribute($context["userlk"], "lead", array())) {
+                echo " checked ";
+            }
+            echo ">
+                 
+             </li>
          
         ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['userlk'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 27
+        // line 35
         echo "        </ul>
 </div>
 
 <div id='user-libre'>
-        <p>Les utilisateurs libres sont :</p>
+        <h2>Les utilisateurs libres sont :</h2>
         
             <ul>
         ";
-        // line 34
+        // line 42
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["libres"]) ? $context["libres"] : $this->getContext($context, "libres")));
         foreach ($context['_seq'] as $context["_key"] => $context["user"]) {
-            // line 35
+            // line 43
             echo "            
-                <li><a class='libre lkswitch' data-id='";
-            // line 36
+                <li class='libre lkswitch' data-id='";
+            // line 44
             echo twig_escape_filter($this->env, $this->getAttribute($context["user"], "id", array()), "html", null, true);
-            echo "' href=\"#\">";
+            echo "'> 
+                    
+                    <a href=\"#\">";
+            // line 46
             echo twig_escape_filter($this->env, $this->getAttribute($context["user"], "username", array()), "html", null, true);
-            echo "</a></li>
+            echo "</a>
+                    <input type=\"radio\" name=\"lead\" value=\"Définir comme lead\">
+                    
+                </li>
             
         ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['user'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 39
+        // line 52
         echo "            </ul>
 </div>        
     
 ";
         
-        $__internal_907fd561776a2ff5cb1e6848ba8479b336e16174106db7ba8b197afe68e1531e->leave($__internal_907fd561776a2ff5cb1e6848ba8479b336e16174106db7ba8b197afe68e1531e_prof);
+        $__internal_4c6bc5e1da2f7d896a72c7318e2716bbefadccae8c1e39333c03760bc7720f63->leave($__internal_4c6bc5e1da2f7d896a72c7318e2716bbefadccae8c1e39333c03760bc7720f63_prof);
 
     }
 
-    // line 44
+    // line 57
     public function block_javascripts($context, array $blocks = array())
     {
-        $__internal_1058a3e7fc029e04a5b7b9e000685e92fb9f74c8caeef3fced4187df99c5770b = $this->env->getExtension("native_profiler");
-        $__internal_1058a3e7fc029e04a5b7b9e000685e92fb9f74c8caeef3fced4187df99c5770b->enter($__internal_1058a3e7fc029e04a5b7b9e000685e92fb9f74c8caeef3fced4187df99c5770b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+        $__internal_4e2be7589081c43ca52811a5fde71c303a8d3f6b333040ce8c1c0fdb2c06c3e8 = $this->env->getExtension("native_profiler");
+        $__internal_4e2be7589081c43ca52811a5fde71c303a8d3f6b333040ce8c1c0fdb2c06c3e8->enter($__internal_4e2be7589081c43ca52811a5fde71c303a8d3f6b333040ce8c1c0fdb2c06c3e8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 45
+        // line 58
         echo "        
             <script>
                 
@@ -136,15 +156,14 @@ class __TwigTemplate_6e140e1c096e9926e8af99247a8ef9c63a86775fb36d3d1bf93a3f74d3c
                     
                     var dataId = arg.attr(\"data-id\");
                    
-                
                 \$.ajax({
                             url: \"";
-        // line 55
+        // line 67
         echo $this->env->getExtension('routing')->getPath("switchProjectUser");
         echo "\",
                             type:\"get\",
                             data:{userId:dataId ,projectId:";
-        // line 57
+        // line 69
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "id", array()), "html", null, true);
         echo ",action:action}
                             
@@ -152,23 +171,49 @@ class __TwigTemplate_6e140e1c096e9926e8af99247a8ef9c63a86775fb36d3d1bf93a3f74d3c
                                 
 }
                 
-                \$(\".lkswitch\").click(function(){
-                    if(\$(this).hasClass('occupe')){
-                        callAjax(\$(this), \"remove\");
-                        \$(this).removeClass('occupe').addClass('libre');
-                        \$(\"#user-libre ul\").append(\$(this));
+                \$(\".lkswitch a\").click(function(){
+                    if(\$(this).siblings('input[type=\"radio\"]').is(':checked')){
+                        alert('On ne peut pas retirer le leader du projet');
+                        return false;
+                    }
+                    if(\$(this).parent().hasClass('occupe')){
+                        callAjax(\$(this).parent(), \"remove\");
+                        \$(this).parent().removeClass('occupe').addClass('libre');
+                        \$(\"#user-libre ul\").append(\$(this).parent());
                         return;
                     }
-                    if(\$(this).hasClass('libre')){
-                        callAjax(\$(this), \"add\");
-                        \$(this).removeClass('libre').addClass('occupe');
-                        \$(\"#user-occupe ul\").append(\$(this));
+                    if(\$(this).parent().hasClass('libre')){
+                        callAjax(\$(this).parent(), \"add\");
+                        \$(this).parent().removeClass('libre').addClass('occupe');
+                        \$(\"#user-occupe ul\").append(\$(this).parent());
                         return;
                     }
-                    var data = \$(this).attr(\"data-id\");
-                        console.log(data);
                     });
                     
+                    \$(\".lkswitch input\").click(function(){
+                        
+                        
+                        var lkswitch= \$(this).parent();
+                        console.log(lkswitch);
+                        
+                        var dataId = lkswitch.attr(\"data-id\");
+                        
+                           \$.ajax({
+                               url: \"";
+        // line 103
+        echo $this->env->getExtension('routing')->getPath("switchLead");
+        echo "\",
+                                type:\"get\",
+                                data:{userId:dataId ,projectId:";
+        // line 105
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "id", array()), "html", null, true);
+        echo "}
+                           })
+                        
+                        
+                        
+                    })
+                        
                    
                 
                 
@@ -176,7 +221,7 @@ class __TwigTemplate_6e140e1c096e9926e8af99247a8ef9c63a86775fb36d3d1bf93a3f74d3c
             
         ";
         
-        $__internal_1058a3e7fc029e04a5b7b9e000685e92fb9f74c8caeef3fced4187df99c5770b->leave($__internal_1058a3e7fc029e04a5b7b9e000685e92fb9f74c8caeef3fced4187df99c5770b_prof);
+        $__internal_4e2be7589081c43ca52811a5fde71c303a8d3f6b333040ce8c1c0fdb2c06c3e8->leave($__internal_4e2be7589081c43ca52811a5fde71c303a8d3f6b333040ce8c1c0fdb2c06c3e8_prof);
 
     }
 
@@ -192,45 +237,58 @@ class __TwigTemplate_6e140e1c096e9926e8af99247a8ef9c63a86775fb36d3d1bf93a3f74d3c
 
     public function getDebugInfo()
     {
-        return array (  148 => 57,  143 => 55,  131 => 45,  125 => 44,  115 => 39,  104 => 36,  101 => 35,  97 => 34,  88 => 27,  77 => 24,  74 => 23,  70 => 22,  59 => 14,  52 => 10,  45 => 6,  41 => 4,  35 => 3,  11 => 1,);
+        return array (  209 => 105,  204 => 103,  167 => 69,  162 => 67,  151 => 58,  145 => 57,  135 => 52,  123 => 46,  118 => 44,  115 => 43,  111 => 42,  102 => 35,  89 => 30,  84 => 28,  79 => 26,  76 => 25,  72 => 24,  60 => 15,  52 => 10,  45 => 6,  41 => 4,  35 => 3,  11 => 1,);
     }
 }
 /* {% extends '::base.html.twig' %}*/
 /* */
 /* {% block content -%}*/
-/*     <h1>Project edit</h1>*/
+/*     <h1>Modification du projet</h1>*/
 /* */
 /*     {{ form(edit_form) }}*/
 /* */
 /*         <ul class="record_actions">*/
-/*     <li>*/
-/*         <a href="{{ path('project') }}">*/
-/*             Back to the list*/
-/*         </a>*/
-/*     </li>*/
-/*     <li>{{ form(delete_form) }}</li>*/
-/* </ul>*/
+/*             <li>*/
+/*                 <a href="{{ path('project') }}">*/
+/*                     Retour à la liste des projets*/
+/*                 </a>*/
+/*             </li>*/
+/*             <li>*/
+/*                 {{ form(delete_form) }}*/
+/*             </li>*/
+/*         </ul>*/
 /* */
 /* */
 /* <div id='user-occupe'>*/
-/*         <p>Les utilisateurs pris sont :</p>*/
+/*         <h2>Les utilisateurs pris sont :</h2>*/
 /*    */
 /*         <ul>*/
 /*      {% for userlk in usersProject%}*/
 /*          */
-/*              <li><a class='occupe lkswitch' data-id='{{userlk.user.id}}' href='#'>{{userlk.user.username}}</a></li>*/
+/*              <li class='occupe lkswitch' data-id='{{userlk.user.id}}'>*/
+/*                  */
+/*                  <a href='#'>{{userlk.user.username}}</a> */
+/*                  <input type="radio" name="lead" value="Définir comme lead"*/
+/*                         {% if userlk.lead %} checked {% endif %}>*/
+/*                  */
+/*              </li>*/
 /*          */
 /*         {%endfor%}*/
 /*         </ul>*/
 /* </div>*/
 /* */
 /* <div id='user-libre'>*/
-/*         <p>Les utilisateurs libres sont :</p>*/
+/*         <h2>Les utilisateurs libres sont :</h2>*/
 /*         */
 /*             <ul>*/
 /*         {% for user in libres %}*/
 /*             */
-/*                 <li><a class='libre lkswitch' data-id='{{user.id}}' href="#">{{user.username}}</a></li>*/
+/*                 <li class='libre lkswitch' data-id='{{user.id}}'> */
+/*                     */
+/*                     <a href="#">{{user.username}}</a>*/
+/*                     <input type="radio" name="lead" value="Définir comme lead">*/
+/*                     */
+/*                 </li>*/
 /*             */
 /*         {%endfor%}*/
 /*             </ul>*/
@@ -247,7 +305,6 @@ class __TwigTemplate_6e140e1c096e9926e8af99247a8ef9c63a86775fb36d3d1bf93a3f74d3c
 /*                     */
 /*                     var dataId = arg.attr("data-id");*/
 /*                    */
-/*                 */
 /*                 $.ajax({*/
 /*                             url: "{{ path('switchProjectUser')}}",*/
 /*                             type:"get",*/
@@ -257,23 +314,43 @@ class __TwigTemplate_6e140e1c096e9926e8af99247a8ef9c63a86775fb36d3d1bf93a3f74d3c
 /*                                 */
 /* }*/
 /*                 */
-/*                 $(".lkswitch").click(function(){*/
-/*                     if($(this).hasClass('occupe')){*/
-/*                         callAjax($(this), "remove");*/
-/*                         $(this).removeClass('occupe').addClass('libre');*/
-/*                         $("#user-libre ul").append($(this));*/
+/*                 $(".lkswitch a").click(function(){*/
+/*                     if($(this).siblings('input[type="radio"]').is(':checked')){*/
+/*                         alert('On ne peut pas retirer le leader du projet');*/
+/*                         return false;*/
+/*                     }*/
+/*                     if($(this).parent().hasClass('occupe')){*/
+/*                         callAjax($(this).parent(), "remove");*/
+/*                         $(this).parent().removeClass('occupe').addClass('libre');*/
+/*                         $("#user-libre ul").append($(this).parent());*/
 /*                         return;*/
 /*                     }*/
-/*                     if($(this).hasClass('libre')){*/
-/*                         callAjax($(this), "add");*/
-/*                         $(this).removeClass('libre').addClass('occupe');*/
-/*                         $("#user-occupe ul").append($(this));*/
+/*                     if($(this).parent().hasClass('libre')){*/
+/*                         callAjax($(this).parent(), "add");*/
+/*                         $(this).parent().removeClass('libre').addClass('occupe');*/
+/*                         $("#user-occupe ul").append($(this).parent());*/
 /*                         return;*/
 /*                     }*/
-/*                     var data = $(this).attr("data-id");*/
-/*                         console.log(data);*/
 /*                     });*/
 /*                     */
+/*                     $(".lkswitch input").click(function(){*/
+/*                         */
+/*                         */
+/*                         var lkswitch= $(this).parent();*/
+/*                         console.log(lkswitch);*/
+/*                         */
+/*                         var dataId = lkswitch.attr("data-id");*/
+/*                         */
+/*                            $.ajax({*/
+/*                                url: "{{ path('switchLead')}}",*/
+/*                                 type:"get",*/
+/*                                 data:{userId:dataId ,projectId:{{ entity.id }}}*/
+/*                            })*/
+/*                         */
+/*                         */
+/*                         */
+/*                     })*/
+/*                         */
 /*                    */
 /*                 */
 /*                 */

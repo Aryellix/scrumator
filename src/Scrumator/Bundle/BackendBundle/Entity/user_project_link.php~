@@ -27,6 +27,13 @@ class user_project_link
      * @ORM\Column(name="lead", type="boolean")
      */
     private $lead;
+    
+    /**
+     * @var datetime
+     *
+     * @ORM\Column(name="lastConnection", type="datetime", nullable=true)
+     */
+    private $lastConnection;
 
      /**
      * @ORM\ManyToOne(targetEntity="Project")
@@ -73,5 +80,52 @@ class user_project_link
     }
     
    
-}
 
+    /**
+     * Set project
+     *
+     * @param \Scrumator\Bundle\BackendBundle\Entity\Project $project
+     *
+     * @return user_project_link
+     */
+    public function setProject(\Scrumator\Bundle\BackendBundle\Entity\Project $project = null)
+    {
+        $this->project = $project;
+
+        return $this;
+    }
+
+    /**
+     * Get project
+     *
+     * @return \Scrumator\Bundle\BackendBundle\Entity\Project
+     */
+    public function getProject()
+    {
+        return $this->project;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \AppBundle\Entity\User $user
+     *
+     * @return user_project_link
+     */
+    public function setUser(\AppBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+}

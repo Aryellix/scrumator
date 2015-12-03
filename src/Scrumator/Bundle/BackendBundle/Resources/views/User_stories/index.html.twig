@@ -26,10 +26,13 @@
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('user_stories_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('user_stories_show', { 'id': entity.id }) }}">Voir</a>
                     </li>
                     <li>
-                        <a href="{{ path('user_stories_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('user_stories_edit', { 'id': entity.id }) }}">Editer</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('display', { 'id': entity.id }) }}">Poker</a>
                     </li>
                 </ul>
                 </td>

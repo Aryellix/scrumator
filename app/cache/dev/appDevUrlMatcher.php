@@ -327,6 +327,19 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
                 }
 
+            }
+
+            // display
+            if (0 === strpos($pathinfo, '/admin/display') && preg_match('#^/admin/display/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'display')), array (  '_controller' => 'Scrumator\\Bundle\\BackendBundle\\Controller\\PokerController::displayAction',));
+            }
+
+            if (0 === strpos($pathinfo, '/admin/p')) {
+                // pokerConnection
+                if ($pathinfo === '/admin/pokerconnection') {
+                    return array (  '_controller' => 'Scrumator\\Bundle\\BackendBundle\\Controller\\PokerController::pokerConnectionAction',  '_route' => 'pokerConnection',);
+                }
+
                 if (0 === strpos($pathinfo, '/admin/project')) {
                     // project
                     if (rtrim($pathinfo, '/') === '/admin/project') {
@@ -787,6 +800,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 // switch_user
                 if (0 === strpos($pathinfo, '/admin/switch_user') && preg_match('#^/admin/switch_user/(?P<user_id>[^/]++)$#s', $pathinfo, $matches)) {
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'switch_user')), array (  '_controller' => 'Scrumator\\Bundle\\BackendBundle\\Controller\\UserController::switchAction',));
+                }
+
+                // switchLead
+                if ($pathinfo === '/admin/switchlead') {
+                    return array (  '_controller' => 'Scrumator\\Bundle\\BackendBundle\\Controller\\UserController::switchLead',  '_route' => 'switchLead',);
                 }
 
                 // switchProjectUser

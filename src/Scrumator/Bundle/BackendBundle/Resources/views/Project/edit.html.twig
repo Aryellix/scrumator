@@ -1,39 +1,52 @@
 {% extends '::base.html.twig' %}
 
 {% block content -%}
-    <h1>Project edit</h1>
+    <h1>Modification du projet</h1>
 
     {{ form(edit_form) }}
 
         <ul class="record_actions">
-    <li>
-        <a href="{{ path('project') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+            <li>
+                <a href="{{ path('project') }}">
+                    Retour à la liste des projets
+                </a>
+            </li>
+            <li>
+                {{ form(delete_form) }}
+            </li>
+        </ul>
 
 
 <div id='user-occupe'>
-        <p>Les utilisateurs pris sont :</p>
+        <h2>Les utilisateurs pris sont :</h2>
    
         <ul>
      {% for userlk in usersProject%}
          
-             <li class='occupe lkswitch' data-id='{{userlk.user.id}}'><a href='#'>{{userlk.user.username}}</a></li>
+             <li class='occupe lkswitch' data-id='{{userlk.user.id}}'>
+                 
+                 <a href='#'>{{userlk.user.username}}</a> 
+                 <input type="radio" name="lead" value="Définir comme lead"
+                        {% if userlk.lead %} checked {% endif %}>
+                 
+             </li>
          
         {%endfor%}
         </ul>
 </div>
 
 <div id='user-libre'>
-        <p>Les utilisateurs libres sont :</p>
+        <h2>Les utilisateurs libres sont :</h2>
         
             <ul>
         {% for user in libres %}
             
-                <li class='libre lkswitch' data-id='{{user.id}}'> <a href="#">{{user.username}}</a></li>
+                <li class='libre lkswitch' data-id='{{user.id}}'> 
+                    
+                    <a href="#">{{user.username}}</a>
+                    <input type="radio" name="lead" value="Définir comme lead">
+                    
+                </li>
             
         {%endfor%}
             </ul>
@@ -50,7 +63,6 @@
                     
                     var dataId = arg.attr("data-id");
                    
-                
                 $.ajax({
                             url: "{{ path('switchProjectUser')}}",
                             type:"get",
@@ -60,23 +72,43 @@
                                 
 }
                 
-                $(".lkswitch").click(function(){
-                    if($(this).hasClass('occupe')){
-                        callAjax($(this), "remove");
-                        $(this).removeClass('occupe').addClass('libre');
-                        $("#user-libre ul").append($(this));
+                $(".lkswitch a").click(function(){
+                    if($(this).siblings('input[type="radio"]').is(':checked')){
+                        alert('On ne peut pas retirer le leader du projet');
+                        return false;
+                    }
+                    if($(this).parent().hasClass('occupe')){
+                        callAjax($(this).parent(), "remove");
+                        $(this).parent().removeClass('occupe').addClass('libre');
+                        $("#user-libre ul").append($(this).parent());
                         return;
                     }
-                    if($(this).hasClass('libre')){
-                        callAjax($(this), "add");
-                        $(this).removeClass('libre').addClass('occupe');
-                        $("#user-occupe ul").append($(this));
+                    if($(this).parent().hasClass('libre')){
+                        callAjax($(this).parent(), "add");
+                        $(this).parent().removeClass('libre').addClass('occupe');
+                        $("#user-occupe ul").append($(this).parent());
                         return;
                     }
-                    var data = $(this).attr("data-id");
-                        console.log(data);
                     });
                     
+                    $(".lkswitch input").click(function(){
+                        
+                        
+                        var lkswitch= $(this).parent();
+                        console.log(lkswitch);
+                        
+                        var dataId = lkswitch.attr("data-id");
+                        
+                           $.ajax({
+                               url: "{{ path('switchLead')}}",
+                                type:"get",
+                                data:{userId:dataId ,projectId:{{ entity.id }}}
+                           })
+                        
+                        
+                        
+                    })
+                        
                    
                 
                 

@@ -27,6 +27,13 @@ class user_project_link
      * @ORM\Column(name="lead", type="boolean")
      */
     private $lead;
+    
+    /**
+     * @var datetime
+     *
+     * @ORM\Column(name="lastConnection", type="datetime", nullable=true)
+     */
+    private $lastConnection;
 
      /**
      * @ORM\ManyToOne(targetEntity="Project")
@@ -120,5 +127,29 @@ class user_project_link
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set lastConnection
+     *
+     * @param \DateTime $lastConnection
+     *
+     * @return user_project_link
+     */
+    public function setLastConnection($lastConnection)
+    {
+        $this->lastConnection = $lastConnection;
+
+        return $this;
+    }
+
+    /**
+     * Get lastConnection
+     *
+     * @return \DateTime
+     */
+    public function getLastConnection()
+    {
+        return $this->lastConnection;
     }
 }

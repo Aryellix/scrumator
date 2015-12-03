@@ -10,4 +10,14 @@ namespace Scrumator\Bundle\BackendBundle\Entity;
  */
 class User_storiesRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getOne($id) {
+        
+        $qb = $this->createQueryBuilder('u')
+                ->join("u.project", "p")
+                ->where('u.id=:id')
+                ->setParameter('id', $id);
+                
+        
+        return $qb->getQuery()->getResult();
+    }
 }
