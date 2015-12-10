@@ -89,7 +89,7 @@ button:hover{
     margin-right: 5px;
 }
 
-.loupiotte.on{
+.on{
     background: greenyellow;
     box-shadow: green 0 0 5px;
 }

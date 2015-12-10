@@ -136,10 +136,14 @@ class user_project_link
      *
      * @return user_project_link
      */
-    public function setLastConnection($lastConnection)
+    public function setLastConnection($lastConnection=NULL)
     {
+        if(!$lastConnection){
+            $lastConnection=  new \DateTime('now');
+        }
+        
         $this->lastConnection = $lastConnection;
-
+        
         return $this;
     }
 

@@ -12,7 +12,7 @@
 <h4>Utilisateurs concernés : </h4>
     <ul>
         {%for userLink in usersLink%}
-            <li><span class="loupiotte"></span> {{userLink.user.username}} </li>
+            <li><span user_id="{{userLink.user.id}}"  class="lampe loupiotte"></span> {{userLink.user.username}} </li>
         {%endfor%}
     </ul>
 {% endblock %}
@@ -22,17 +22,42 @@
         $(document).ready(function(){
             
             function checkConnectedUsers(){
+                console.info('check');
                 $.ajax({
                         url: "{{path('pokerConnection')}}",
                         type:"get",
                         data:{user_id : {{app.user.id}},
                               project_id : {{user_story.project.id}}
-                             }
+                             },
+                        success:function(resultat, statut){
+                            console.log(resultat, statut);
+                            $(".lampe").each(function(index){
+                                console.log($(this).attr('user_id'));
+                                console.log(resultat[$(this).attr('user_id')]);
+                                if(resultat[$(this).attr('user_id')].connected==true){
+                                    $(this).addClass('on');
+                                }
+                                else{
+                                    $(this).removeClass('on');
+                                }
+                                
+                            })
+                            
+                        }
                 });
+                
+                
+                
             }
             
             checkConnectedUsers();
-            });
+            
+            setInterval(function() {
+              checkConnectedUsers()},30000);
+            
+            
+                      
+        });
         
         
     </script>

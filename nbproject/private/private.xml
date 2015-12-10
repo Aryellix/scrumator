@@ -2,15 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/var/www/html/scrumator/src/Scrumator/Bundle/BackendBundle/Controller/UserController.php</file>
-            <file>file:/var/www/html/scrumator/src/Scrumator/Bundle/BackendBundle/Controller/PokerController.php</file>
-            <file>file:/var/www/html/scrumator/src/Scrumator/Bundle/BackendBundle/Resources/views/Project/edit.html.twig</file>
-            <file>file:/var/www/html/scrumator/src/Scrumator/Bundle/BackendBundle/Entity/User_storiesRepository.php</file>
-            <file>file:/var/www/html/scrumator/src/Scrumator/Bundle/BackendBundle/Resources/views/Poker/display.html.twig</file>
-            <file>file:/var/www/html/scrumator/src/Scrumator/Bundle/BackendBundle/Entity/user_project_link.php</file>
-            <file>file:/var/www/html/scrumator/src/Scrumator/Bundle/BackendBundle/Resources/views/User_stories/index.html.twig</file>
-            <file>file:/var/www/html/scrumator/web/css/style.css</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
